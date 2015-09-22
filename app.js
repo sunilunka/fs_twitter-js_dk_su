@@ -1,7 +1,8 @@
 var express = require("express");
 var app = express();
-
+var swig = require("swig");
 var router = express.Router();
+var people = require("./people.js")
 
 router.use(function(req, res, next) {
   console.log(req.method, req.url, res.statusCode);/*
@@ -12,7 +13,8 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res, next){
-  res.send("Website is working");
+  res.send("website is working  ");
+  people.printPeople();
 });
 
 router.get('/news', function(req, res, next){
