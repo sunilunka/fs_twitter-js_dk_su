@@ -13,9 +13,9 @@ var data = {
 
 function printPeople() {
   swig.renderFile("./views/index.html", data, function(error, output){
-   console.log(output);
+  console.log(output);
   });
 }
 
-module.exports.data = data;
 module.exports.printPeople = printPeople;
+module.exports.data = data;
