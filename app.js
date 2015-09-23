@@ -3,6 +3,13 @@ var app = express();
 var swig = require("swig");
 var people = require("./people.js");
 var routes = require("./routes");
+var socketio = require("socket.io");
+
+
+
+app.use(express.static(__dirname + '/public'));
+app.use('/users' ,express.static(__dirname + '/public'));
+
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -22,4 +29,8 @@ var server = app.listen(3000, function(){
 
 });
 
-app.use('/', routes);
+var io = socketio.listen(server);
+
+
+
+app.use('/', routes(io));
